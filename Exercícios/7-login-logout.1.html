@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login e Logout</title>
+    <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif
+        }
+        body {
+            padding: 5px
+        }
+    </style>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        class LoginLogout extends React.Component{
+            constructor(props){
+                super(props)
+                this.state= { logado: true }
+                this.handleClick = this.handleClick.bind(this)
+            }
+
+            handleClick(){
+                this.setState(prevState => {
+                    if (prevState.logado === false){
+                        return { logado: true};
+                    } else {
+                        return { logado: false};
+                    }
+                })
+            }
+
+            render(){
+                return (
+                    <div>
+                        <h1>
+                            {this.state.logado ? "Faça seu login" : "Bem,vindo!"}
+                        </h1>
+                        <button href="#" onClick={this.handleClick}>
+                            {this.state.logado ? (
+                                <h2>Login</h2>
+                                ) : (
+                                    <h2>Sair</h2>
+                                    )}
+                        </button>
+                    </div>
+                )
+            }
+        }
+
+        //Caso precisasse redirecionar, seriam endereços diferentes, o toggle não funcionaria. Eu precisaria criar uma função de login e outra de logout
+
+        ReactDOM.render(
+            <LoginLogout />,
+            document.getElementById('root')
+        );
+    </script>
+  </body>
+</html>

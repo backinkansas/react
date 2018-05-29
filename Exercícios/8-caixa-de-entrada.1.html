@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Caixa de entrada</title>
+    <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif
+        }
+    </style>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const emails = ['Aprenda React', 'Oi, olha um emprego', 'Nota fiscal', 'Ingresso chegou', 'Olha um spam'];
+        const usuario = "Milena";
+
+        function ExibirEmails(props) {
+            return (
+                    <div>
+                        <h1>Hello and welcome back, {props.user}!</h1>
+                        <p>Você tem {props.unreadMessages.length} novas mensagens</p>
+                        <ul>
+                            {props.unreadMessages.map(email => (
+                                <li>{email}</li>
+                            ))}
+                        </ul>
+                    </div>
+            )
+        }
+
+        ReactDOM.render(
+            <ExibirEmails unreadMessages={emails} user={usuario}/>,
+            document.getElementById('root')
+        );
+    </script>
+  </body>
+</html>
